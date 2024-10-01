@@ -39,10 +39,15 @@ namespace NameSorter
     class NameList
     {
         public List<string> Names { get; private set; }
-
+        // Constructor with list.
         public NameList(List<string> nameList)
         {
             Names = nameList;
+        }
+        // Constructor without list, creates new list.
+        public NameList()
+        {
+            Names = new List<string>();
         }
 
         public void AddName(string name)

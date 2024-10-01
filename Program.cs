@@ -6,6 +6,43 @@ namespace NameSorter
     {
         static void Main(string[] args)
         {
+
+            bool keepRunning = true;
+
+
+            while (keepRunning)
+            {
+
+                // Helper method that prints out the contents of the menu.
+                PrintMenu();
+
+                // VerifyMenuInput returns a bool. True while it matches something in the menu.
+                // GetUserInput gets a readline from the user.
+                while (VerifyMenuInput(GetUserInput()))
+                {
+                    // do things with the NameList-class.
+
+
+
+
+                }
+
+
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
             List<string> names = new List<string> { "Anna", "John", "Alice", "Beatrice" };
             Console.WriteLine("Original list:");
             foreach (var name in names)

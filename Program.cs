@@ -34,7 +34,11 @@ namespace NameSorter
 
 
             void PrintMenu()
-                { }
+            {
+                Console.WriteLine("Welcome to NameSorter!");
+                Console.WriteLine("What would you like to do?");
+
+            }
 
 
 
@@ -83,16 +87,24 @@ namespace NameSorter
 
     class NameList
     {
+        private static bool _isThereList;
         public List<string> Names { get; private set; }
+        public static bool IsThereList {get; private set;} = false;
+
+
         // Constructor with list.
         public NameList(List<string> nameList)
         {
             Names = nameList;
+            _isThereList = true;
+
         }
         // Constructor without list, creates new list.
         public NameList()
         {
             Names = new List<string>();
+            _isThereList = true;
+
         }
 
         public void AddName(string name)
@@ -107,6 +119,7 @@ namespace NameSorter
 
         public void SortNameList()
         { Names.Sort(); }
+
 
     }
 }

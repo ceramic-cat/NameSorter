@@ -33,12 +33,20 @@ namespace NameSorter
             }
 
 
+            void PrintMenu()
+                { }
 
 
 
+            bool VerifyMenuInput(string input)
+            {
 
+            }
 
+            string GetUserInput()
+            {
 
+            }
 
 
 

@@ -34,4 +34,29 @@ namespace NameSorter
             Console.ReadKey();
         }
     }
+
+
+    class NameList
+    {
+        public List<string> Names { get; private set; }
+
+        public NameList(List<string> nameList)
+        {
+            Names = nameList;
+        }
+
+        public void AddName(string name)
+        {
+            Names.Add(name);
+        }
+
+        public void RemoveName(string name)
+        {
+            Names.Remove(name);
+        }
+
+        public void SortNameList()
+        { Names.Sort(); }
+
+    }
 }

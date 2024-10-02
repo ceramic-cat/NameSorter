@@ -98,61 +98,68 @@ namespace NameSorter
 
 
 
-                    //List<string> names = new List<string> { "Anna", "John", "Alice", "Beatrice" };
-                    //Console.WriteLine("Original list:");
-                    //foreach (var name in names)
-                    //{
-                    //    Console.WriteLine(name);
-                    //}
+            //List<string> names = new List<string> { "Anna", "John", "Alice", "Beatrice" };
+            //Console.WriteLine("Original list:");
+            //foreach (var name in names)
+            //{
+            //    Console.WriteLine(name);
+            //}
 
-                    //names.Sort(); // Sort the names alphabetically
-                    //Console.WriteLine("\nSorted list:");
-                    //foreach (var name in names)
-                    //{
-                    //    Console.WriteLine(name);
-                    //}
+            //names.Sort(); // Sort the names alphabetically
+            //Console.WriteLine("\nSorted list:");
+            //foreach (var name in names)
+            //{
+            //    Console.WriteLine(name);
+            //}
 
-                    //Console.WriteLine("\nEnter name to search:");
-                    //string searchName = Console.ReadLine();
+            //Console.WriteLine("\nEnter name to search:");
+            //string searchName = Console.ReadLine();
 
-                    //if (names.Contains(searchName))
-                    //{
-                    //    Console.WriteLine($"{searchName} is in the list.");
-                    //}
-                    //else
-                    //{
-                    //    Console.WriteLine($"{searchName} is not in the list.");
-                    //}
-                    //Console.ReadKey();
-                }
-            }
-        }
-
-
-        class NameList : List<string>
-        {
-            private static bool _isThereList;
-            public List<string> Names { get; private set; }
-            public static bool IsThereList { get; private set; } = false;
-
-
-            // Constructor with list.
-            public NameList(List<string> nameList)
-            {
-                Names = nameList;
-                _isThereList = true;
-
-            }
-            // Constructor without list, creates new list.
-            public NameList()
-            {
-                Names = new List<string>();
-                _isThereList = true;
-
-            }
-
-
-
+            //if (names.Contains(searchName))
+            //{
+            //    Console.WriteLine($"{searchName} is in the list.");
+            //}
+            //else
+            //{
+            //    Console.WriteLine($"{searchName} is not in the list.");
+            //}
+            //Console.ReadKey();
         }
     }
 }
+
+
+class NameList : List<string>
+{
+    private static bool _isThereList;
+    public List<string> Names { get; private set; }
+    public static bool IsThereList { get; private set; } = false;
+
+
+    // Constructor with list.
+    public NameList(List<string> nameList)
+    {
+        Names = nameList;
+        _isThereList = true;
+
+    }
+    // Constructor without list, creates new list.
+    public NameList()
+    {
+        Names = new List<string>();
+        _isThereList = true;
+
+    }
+    public void PrintList(NameList friend)
+    {
+        foreach (var name in friend.Names)
+        {
+            Console.WriteLine(name);
+        }
+    }
+
+
+
+}
+
+

@@ -47,6 +47,23 @@ namespace NameSorter
 
             }
 
+            bool VerifyMenuInput(string input)
+            {
+                if (input != null)
+                {
+                    if (menuOptions.Keys.Contains(input))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            string GetUserInput()
+            {
+                Console.WriteLine("Please enter an option:");
+                return Console.ReadLine();
+            }
 
             void PrintMenu()
             {
@@ -72,26 +89,10 @@ namespace NameSorter
 
 
                     }
+                }
+            }
 
 
-
-                    bool VerifyMenuInput(string input)
-                    {
-                        if (input != null)
-                        {
-                            if (menuOptions.Keys.Contains(input))
-                            {
-                                return true;
-                            }
-                        }
-                        return false;
-                    }
-
-                    string GetUserInput()
-                    {
-                        Console.WriteLine("Please enter an option:");
-                        return Console.ReadLine();
-                    }
 
 
 

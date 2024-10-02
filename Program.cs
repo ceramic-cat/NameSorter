@@ -85,7 +85,7 @@ namespace NameSorter
     }
 
 
-    class NameList
+    class NameList: List<string>
     {
         private static bool _isThereList;
         public List<string> Names { get; private set; }
@@ -107,18 +107,6 @@ namespace NameSorter
 
         }
 
-        public void AddName(string name)
-        {
-            Names.Add(name);
-        }
-
-        public void RemoveName(string name)
-        {
-            Names.Remove(name);
-        }
-
-        public void SortNameList()
-        { Names.Sort(); }
 
 
     }

@@ -11,7 +11,7 @@ namespace NameSorter
 
             Dictionary<string, string> menuOptions = new Dictionary<string, string>()
             {
-                {"A", "Start a new list with a new name." },
+                {"A", "Create new empty current list and add new name." },
                 {"B", "Make a list with preselected names" },
                 {"C", "Add name to list" },
                 {"D", "Remove name from list"},
@@ -34,7 +34,7 @@ namespace NameSorter
                 "Liqorice"
             };
 
-            NameList userNameList;
+            NameList userNameList = new NameList();
 
             bool nameListExists = false;
             //if (userNameList != null)
@@ -45,7 +45,7 @@ namespace NameSorter
             //bool nameListExists = userNameList.IsInstanceOfType(NameList));
             while (keepRunning)
             {
-                nameListExists = NameList.IsThereList;
+
                 // Helper method that prints out the contents of the menu.
                 PrintMenu();
 
@@ -58,7 +58,8 @@ namespace NameSorter
                     {
                         case "A":
                             //Console.WriteLine("A");
-                            userNameList = new NameList(Console.ReadLine());
+                            userNameList.Clear();
+                            userNameList.Add(GetName());
 
                             break;
                         case "B":
@@ -68,7 +69,7 @@ namespace NameSorter
 
                             break;
                         case "C":
-                            if (!NameList.IsThereList)
+                            if (userNameList.Count>0)
                             {
                                 PrintWarning();
                                 break;
@@ -76,15 +77,18 @@ namespace NameSorter
                             Console.WriteLine("C");
                             break;
                         case "D":
-                            if (!NameList.IsThereList)
+                            if (userNameList.Count > 0)
                             {
                                 PrintWarning();
                                 break;
                             }
-                            else Console.WriteLine("D");
+                            else
+                            {
+                                userNameList.Add(GetName());
+                            }
                             break;
                         case "E":
-                            if (!NameList.IsThereList)
+                            if (userNameList.Count > 0)
                             {
                                 PrintWarning();
                                 break;
@@ -93,7 +97,7 @@ namespace NameSorter
                             break;
 
                         case "F":
-                            if (!NameList.IsThereList)
+                            if (userNameList.Count > 0)
                             {
                                 PrintWarning();
                                 break;
@@ -103,7 +107,7 @@ namespace NameSorter
                             break;
 
                         case "G":
-                            if (!NameList.IsThereList)
+                            if (userNameList.Count > 0)
                             {
                                 PrintWarning();
                                 break;
@@ -113,7 +117,7 @@ namespace NameSorter
                             break;
 
                         case "H":
-                            if (!NameList.IsThereList)
+                            if (userNameList.Count > 0)
                             {
                                 PrintWarning();
                                 break;
@@ -163,6 +167,12 @@ namespace NameSorter
                 return Console.ReadLine();
             }
 
+            string GetName()
+            {
+                Console.WriteLine("Please enter a name: ");
+                return Console.ReadLine();
+            }
+
             void PrintMenu()
             {
                 Console.WriteLine("Welcome to NameSorter!");
@@ -179,7 +189,7 @@ namespace NameSorter
                         }
                         else
                         {
-                            if (NameList.IsThereList)
+                            if (userNameList.Count > 0)
                             {
                                 Console.WriteLine($"[{option.Key}]\t {option.Value}");
                             }
@@ -187,11 +197,6 @@ namespace NameSorter
                     }
                 }
             }
-
-
-
-
-
 
 
             //List<string> names = new List<string> { "Anna", "John", "Alice", "Beatrice" };
@@ -229,21 +234,21 @@ class NameList : List<string>
 {
     //private static bool _isThereList;
     public List<string> Names { get; private set; }
-    public static bool IsThereList { get; private set; } = false;
+    //public static bool IsThereList { get; private set; } = false;
 
 
     // Constructor with list.
     public NameList(List<string> nameList)
     {
         Names = nameList;
-        IsThereList = true;
+        //IsThereList = true;
 
     }
     // Constructor with name.
-    public NameList(string name)
+    public NameList()
     {
-        Names = new List<string>() { name};
-        IsThereList = true;
+        Names = new List<string>();
+        //IsThereList = true;
 
     }
     public void PrintList(NameList friend)

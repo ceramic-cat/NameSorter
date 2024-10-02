@@ -8,17 +8,17 @@ namespace NameSorter
         static void Main(string[] args)
         {
 
-            Dictionary<char, string> menuOptions = new Dictionary<char, string>()
+            Dictionary<string, string> menuOptions = new Dictionary<string, string>()
             {
-                {'A', "Make an empty list of names" },
-                {'B', "Make a list with preselected names" },
-                {'C', "Add name to list" },
-                {'D', "Remove name from list"},
-                {'E', "Search name in list" },
-                {'F', "Display list" },
-                {'G', "Sort list: Alphabetical order" },
-                {'H', "Sort list: Reverse alphabetical order" },
-                {'X', "Exit program" }
+                {"A", "Make an empty list of names" },
+                {"B", "Make a list with preselected names" },
+                {"C", "Add name to list" },
+                {"D", "Remove name from list"},
+                {"E", "Search name in list" },
+                {"F", "Display list" },
+                {"G", "Sort list: Alphabetical order" },
+                {"H", "Sort list: Reverse alphabetical order" },
+                {"X", "Exit program" }
             };
 
 
@@ -57,7 +57,7 @@ namespace NameSorter
                 {
                     {
                         // Always print A, B and X options. The rest only prints if there is a list instantiated. 
-                        if (!option.Key.Equals('A') && !option.Key.Equals('B') && !option.Key.Equals('X'))
+                        if (!option.Key.Equals("A") && !option.Key.Equals("B") && !option.Key.Equals("X"))
                             if (NameList.IsThereList)
                             {
                                 Console.WriteLine($"[{option.Key}]\t {option.Value}");
@@ -77,12 +77,20 @@ namespace NameSorter
 
                     bool VerifyMenuInput(string input)
                     {
-
+                        if (input != null)
+                        {
+                            if (menuOptions.Keys.Contains(input))
+                            {
+                                return true;
+                            }
+                        }
+                        return false;
                     }
 
                     string GetUserInput()
                     {
-
+                        Console.WriteLine("Please enter an option:");
+                        return Console.ReadLine();
                     }
 
 

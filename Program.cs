@@ -69,7 +69,7 @@ namespace NameSorter
 
                             break;
                         case "C":
-                            if (userNameList.Count>0)
+                            if (userNameList.Count<=0)
                             {
                                 PrintWarning();
                                 break;
@@ -77,7 +77,7 @@ namespace NameSorter
                             Console.WriteLine("C");
                             break;
                         case "D":
-                            if (userNameList.Count > 0)
+                            if (userNameList.Count <= 0)
                             {
                                 PrintWarning();
                                 break;
@@ -88,7 +88,7 @@ namespace NameSorter
                             }
                             break;
                         case "E":
-                            if (userNameList.Count > 0)
+                            if (userNameList.Count <= 0)
                             {
                                 PrintWarning();
                                 break;
@@ -97,7 +97,7 @@ namespace NameSorter
                             break;
 
                         case "F":
-                            if (userNameList.Count > 0)
+                            if (userNameList.Count <= 0)
                             {
                                 PrintWarning();
                                 break;
@@ -107,7 +107,7 @@ namespace NameSorter
                             break;
 
                         case "G":
-                            if (userNameList.Count > 0)
+                            if (userNameList.Count <= 0)
                             {
                                 PrintWarning();
                                 break;
@@ -117,7 +117,7 @@ namespace NameSorter
                             break;
 
                         case "H":
-                            if (userNameList.Count > 0)
+                            if (userNameList.Count <= 0)
                             {
                                 PrintWarning();
                                 break;

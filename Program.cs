@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Xml.Linq;
 
 namespace NameSorter
@@ -23,7 +24,7 @@ namespace NameSorter
 
 
             bool keepRunning = true;
-
+            string userInput = "start";
 
             while (keepRunning)
             {
@@ -33,15 +34,51 @@ namespace NameSorter
 
                 // VerifyMenuInput returns a bool. True while it matches something in the menu.
                 // GetUserInput gets a readline from the user.
-                while (VerifyMenuInput(GetUserInput()))
+                if (VerifyMenuInput(GetUserInput()))
                 {
                     // do things with the NameList-class.
+                    switch (userInput)
+                    {
+                        case "A":
+                            Console.WriteLine("A");
+                            break;
+                        case "B":
+                            Console.WriteLine("B");
+                            break;
+                        case "C":
+                            Console.WriteLine("C");
+                            break;
+                        case "D":
+                            Console.WriteLine("D");
+                            break;
+                        case "E":
+                            Console.WriteLine("E");
+                            break;
 
+                        case "F":
+                            Console.WriteLine("F");
+                            break;
 
+                        case "G":
+                            Console.WriteLine("G");
+                            break;
 
+                        case "H":
+                            Console.WriteLine("H");
+                            break;
 
+                        case "X":
+                            keepRunning = false;
+                            break;
+                    }
                 }
-
+                else
+                {
+                    Console.WriteLine("Invalid input, please try again.");
+                    Console.WriteLine("Press any key to continue");
+                    Console.ReadKey(true);
+                    Console.Clear();
+                }
 
 
 
@@ -49,10 +86,12 @@ namespace NameSorter
 
             bool VerifyMenuInput(string input)
             {
+                input = input.ToUpper();
                 if (input != null)
                 {
                     if (menuOptions.Keys.Contains(input))
                     {
+                        userInput = input;
                         return true;
                     }
                 }

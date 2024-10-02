@@ -100,20 +100,10 @@ namespace NameSorter
                                 PrintWarning();
                                 break;
                             }
-                            Console.WriteLine("E");
-                            //Console.WriteLine("\nEnter name to search:");
-                            //string searchName = Console.ReadLine();
 
-                            //if (names.Contains(searchName))
-                            //{
-                            //    Console.WriteLine($"{searchName} is in the list.");
-                            //}
-                            //else
-                            //{
-                            //    Console.WriteLine($"{searchName} is not in the list.");
-                            //}
-
-
+                            if (userNameList.Contains(userInput))
+                                Console.WriteLine($"{userInput} is in the list.");
+                            else Console.WriteLine($"{userInput} is not in the list.");
                             break;
                         // Display list
                         case "F":

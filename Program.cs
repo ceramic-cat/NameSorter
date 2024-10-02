@@ -173,20 +173,17 @@ namespace NameSorter
                     {
                         // Always print A, B and X options. The rest only prints if there is a list instantiated. 
                         // NOT (ABX) gets printed 2times. fix!
-                        if (!option.Key.Equals("A") && !(option.Key.Equals("B")) && !(option.Key.Equals("X")))
+                        if (option.Key.Equals("A") || (option.Key.Equals("B")) || (option.Key.Equals("X")))
+                        {
+                        Console.WriteLine($"[{option.Key}]\t {option.Value}");
+                        }
+                        else
+                        {
                             if (NameList.IsThereList)
                             {
                                 Console.WriteLine($"[{option.Key}]\t {option.Value}");
-
                             }
-                            else
-                            {
-                                break;
-                            }
-                        Console.WriteLine($"[{option.Key}]\t {option.Value}");
-
-
-
+                        }
                     }
                 }
             }

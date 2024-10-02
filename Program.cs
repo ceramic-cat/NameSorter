@@ -24,10 +24,10 @@ namespace NameSorter
                 {"X", "Exit program" }
             };
 
-
             bool keepRunning = true;
             string userInput = "start";
 
+            // Names for a list input
             List<string> standardNames = new List<string>()
             {
                 "Celeste",
@@ -36,9 +36,8 @@ namespace NameSorter
                 "Liqorice"
             };
 
+            // userNameList is the NameList for this program.
             NameList userNameList = new NameList();
-
-            bool nameListExists = false;
 
             while (keepRunning)
             {
@@ -142,6 +141,7 @@ namespace NameSorter
                             }
                             userNameList.Sort();
                             userNameList.Reverse();
+                            Console.WriteLine("Your sorted list: ");
                             userNameList.PrintList(userNameList);
                             break;
                         // Exit program
@@ -157,16 +157,14 @@ namespace NameSorter
                 Console.WriteLine("Press any key to continue");
                 Console.ReadKey(true);
                 Console.Clear();
-
-
-
             }
-
+            // method for printing common warning
             void PrintWarning()
             {
                 Console.WriteLine("Invalid Option, you need to create a NameList first.");
             }
 
+            // method for checking that the input is valid for the menu options. Allows for lower case.
             bool VerifyMenuInput(string input)
             {
                 input = input.ToUpper();
@@ -193,6 +191,7 @@ namespace NameSorter
                 return Console.ReadLine();
             }
 
+
             void PrintMenu()
             {
                 Console.WriteLine("Welcome to NameSorter!");
@@ -201,8 +200,7 @@ namespace NameSorter
                 foreach (var option in menuOptions)
                 {
                     {
-                        // Always print A, B and X options. The rest only prints if there is a list instantiated. 
-                        // NOT (ABX) gets printed 2times. fix!
+                        // Always print A, B and X options. The rest only prints if there's a NameList that has at least 1 value in it.
                         if (option.Key.Equals("A") || (option.Key.Equals("B")) || (option.Key.Equals("X")))
                         {
                             Console.WriteLine($"[{option.Key}]\t {option.Value}");
@@ -221,16 +219,14 @@ namespace NameSorter
     }
 }
 
-
+// NameList is based on the List class, so a lot of methods we get for free (such as .Add()).
 class NameList : List<string>
 {
-    //private static bool _isThereList;
     public List<string> Names { get; private set; }
-    //public static bool IsThereList { get; private set; } = false;
 
 
     // Constructor with list.
-    public NameList(List<string> nameList) : base (nameList)
+    public NameList(List<string> nameList) : base(nameList)
     {
         Names = nameList;
 
@@ -239,7 +235,6 @@ class NameList : List<string>
     public NameList() : base()
     {
         Names = new List<string>();
-        //IsThereList = true;
 
     }
     public void PrintList(NameList names)
@@ -250,9 +245,6 @@ class NameList : List<string>
             Console.WriteLine(name);
         }
     }
-
-
-
 }
 
 

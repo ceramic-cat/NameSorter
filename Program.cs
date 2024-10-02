@@ -11,7 +11,7 @@ namespace NameSorter
 
             Dictionary<string, string> menuOptions = new Dictionary<string, string>()
             {
-                {"A", "Make an empty list of names" },
+                {"A", "Start a new list with a new name." },
                 {"B", "Make a list with preselected names" },
                 {"C", "Add name to list" },
                 {"D", "Remove name from list"},
@@ -25,10 +25,27 @@ namespace NameSorter
 
             bool keepRunning = true;
             string userInput = "start";
+            
+            List<string> standardNames = new List<string>()
+            {
+                "Celeste",
+                "Tengil",
+                "Aron",
+                "Liqorice"
+            };
 
+            NameList userNameList;
+
+            bool nameListExists = false;
+            //if (userNameList != null)
+            //{
+            //    nameListExists = true;
+            //}
+
+            //bool nameListExists = userNameList.IsInstanceOfType(NameList));
             while (keepRunning)
             {
-
+                nameListExists = NameList.IsThereList;
                 // Helper method that prints out the contents of the menu.
                 PrintMenu();
 
@@ -40,10 +57,15 @@ namespace NameSorter
                     switch (userInput)
                     {
                         case "A":
-                            Console.WriteLine("A");
+                            //Console.WriteLine("A");
+                            userNameList = new NameList(Console.ReadLine());
+
                             break;
                         case "B":
-                            Console.WriteLine("B");
+                            //Console.WriteLine("B");
+                            userNameList = new NameList(standardNames);
+
+
                             break;
                         case "C":
                             if (!NameList.IsThereList)
@@ -150,7 +172,8 @@ namespace NameSorter
                 {
                     {
                         // Always print A, B and X options. The rest only prints if there is a list instantiated. 
-                        if (!option.Key.Equals("A") && !option.Key.Equals("B") && !option.Key.Equals("X"))
+                        // NOT (ABX) gets printed 2times. fix!
+                        if (!option.Key.Equals("A") && !(option.Key.Equals("B")) && !(option.Key.Equals("X")))
                             if (NameList.IsThereList)
                             {
                                 Console.WriteLine($"[{option.Key}]\t {option.Value}");
@@ -158,7 +181,7 @@ namespace NameSorter
                             }
                             else
                             {
-                                continue;
+                                break;
                             }
                         Console.WriteLine($"[{option.Key}]\t {option.Value}");
 
@@ -207,7 +230,7 @@ namespace NameSorter
 
 class NameList : List<string>
 {
-    private static bool _isThereList;
+    //private static bool _isThereList;
     public List<string> Names { get; private set; }
     public static bool IsThereList { get; private set; } = false;
 
@@ -216,14 +239,14 @@ class NameList : List<string>
     public NameList(List<string> nameList)
     {
         Names = nameList;
-        _isThereList = true;
+        IsThereList = true;
 
     }
-    // Constructor without list, creates new list.
-    public NameList()
+    // Constructor with name.
+    public NameList(string name)
     {
-        Names = new List<string>();
-        _isThereList = true;
+        Names = new List<string>() { name};
+        IsThereList = true;
 
     }
     public void PrintList(NameList friend)

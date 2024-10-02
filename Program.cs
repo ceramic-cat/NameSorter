@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.Reflection.Metadata;
 using System.Xml.Linq;
 
 namespace NameSorter
@@ -118,8 +119,8 @@ namespace NameSorter
                                 PrintWarning();
                                 break;
                             }
-
-                            Console.WriteLine("F");
+                            Console.WriteLine("Your NameList: ");
+                            userNameList.PrintList();
                             break;
                             // Sort list in alpha order
                         case "G":
@@ -129,7 +130,9 @@ namespace NameSorter
                                 break;
                             }
 
-                            Console.WriteLine("G");
+                            userNameList.Sort();
+                            Console.WriteLine("Your sorted list: ");
+                            userNameList.PrintList();
                             break;
                             // Sort list in reverse alpha order
                         case "H":
@@ -138,7 +141,9 @@ namespace NameSorter
                                 PrintWarning();
                                 break;
                             }
-                            Console.WriteLine("H");
+                            userNameList.Sort();
+                            userNameList.Reverse();
+                            userNameList.PrintList();
                             break;
                             // Exit program
                         case "X":
@@ -267,9 +272,10 @@ class NameList : List<string>
         //IsThereList = true;
 
     }
-    public void PrintList(NameList friend)
+    public void PrintList()
     {
-        foreach (var name in friend.Names)
+         
+        foreach (var name in this.Names)
         {
             Console.WriteLine(name);
         }

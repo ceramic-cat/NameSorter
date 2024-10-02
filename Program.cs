@@ -25,7 +25,7 @@ namespace NameSorter
 
             bool keepRunning = true;
             string userInput = "start";
-            
+
             List<string> standardNames = new List<string>()
             {
                 "Celeste",
@@ -37,13 +37,7 @@ namespace NameSorter
             NameList userNameList = new NameList();
 
             bool nameListExists = false;
-            //if (userNameList != null)
-            //{
-            //    nameListExists = true;
-            //}
 
-            //bool nameListExists = userNameList.IsInstanceOfType(NameList));
-            while (keepRunning)
             {
 
                 // Helper method that prints out the contents of the menu.
@@ -56,26 +50,34 @@ namespace NameSorter
                     // do things with the NameList-class.
                     switch (userInput)
                     {
+                        // Empty list, add new name
                         case "A":
-                            //Console.WriteLine("A");
                             userNameList.Clear();
+                            Console.WriteLine("Please enter a name: ");
                             userNameList.Add(GetName());
 
                             break;
+
+
+                        // List with standard names
                         case "B":
-                            //Console.WriteLine("B");
                             userNameList = new NameList(standardNames);
-
-
+                            Console.WriteLine("The standard names have replaced any previous list.");
                             break;
+
+
+                            // Add name
                         case "C":
-                            if (userNameList.Count<=0)
+                            if (userNameList.Count <= 0)
                             {
                                 PrintWarning();
                                 break;
                             }
-                            Console.WriteLine("C");
+                            Console.WriteLine("Please enter a name: ");
+                            userNameList.Add(GetName());
                             break;
+
+                        // Remove name
                         case "D":
                             if (userNameList.Count <= 0)
                             {
@@ -84,9 +86,10 @@ namespace NameSorter
                             }
                             else
                             {
-                                userNameList.Add(GetName());
+                                userNameList.Remove(GetName());
                             }
                             break;
+                            // Search for name
                         case "E":
                             if (userNameList.Count <= 0)
                             {
@@ -94,8 +97,21 @@ namespace NameSorter
                                 break;
                             }
                             Console.WriteLine("E");
-                            break;
+                            //Console.WriteLine("\nEnter name to search:");
+                            //string searchName = Console.ReadLine();
 
+                            //if (names.Contains(searchName))
+                            //{
+                            //    Console.WriteLine($"{searchName} is in the list.");
+                            //}
+                            //else
+                            //{
+                            //    Console.WriteLine($"{searchName} is not in the list.");
+                            //}
+
+
+                            break;
+                            // Display list
                         case "F":
                             if (userNameList.Count <= 0)
                             {
@@ -105,7 +121,7 @@ namespace NameSorter
 
                             Console.WriteLine("F");
                             break;
-
+                            // Sort list in alpha order
                         case "G":
                             if (userNameList.Count <= 0)
                             {
@@ -115,7 +131,7 @@ namespace NameSorter
 
                             Console.WriteLine("G");
                             break;
-
+                            // Sort list in reverse alpha order
                         case "H":
                             if (userNameList.Count <= 0)
                             {
@@ -124,7 +140,7 @@ namespace NameSorter
                             }
                             Console.WriteLine("H");
                             break;
-
+                            // Exit program
                         case "X":
                             keepRunning = false;
                             break;
@@ -134,9 +150,9 @@ namespace NameSorter
                 {
                     Console.WriteLine("Invalid input, please try again.");
                 }
-                    Console.WriteLine("Press any key to continue");
-                    Console.ReadKey(true);
-                    Console.Clear();
+                Console.WriteLine("Press any key to continue");
+                Console.ReadKey(true);
+                Console.Clear();
 
 
 
@@ -185,7 +201,7 @@ namespace NameSorter
                         // NOT (ABX) gets printed 2times. fix!
                         if (option.Key.Equals("A") || (option.Key.Equals("B")) || (option.Key.Equals("X")))
                         {
-                        Console.WriteLine($"[{option.Key}]\t {option.Value}");
+                            Console.WriteLine($"[{option.Key}]\t {option.Value}");
                         }
                         else
                         {

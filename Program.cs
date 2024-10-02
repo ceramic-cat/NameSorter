@@ -77,7 +77,6 @@ namespace NameSorter
                                 PrintWarning();
                                 break;
                             }
-                            Console.WriteLine("Please enter a name: ");
                             userNameList.Add(GetName());
                             break;
 
@@ -90,7 +89,13 @@ namespace NameSorter
                             }
                             else
                             {
-                                userNameList.Remove(GetName());
+                                string nameToRemove = GetName();
+                                if (userNameList.Contains(nameToRemove))
+                                {
+                                    userNameList.Remove(GetName());
+                                    Console.WriteLine($"{nameToRemove} has been removed from the list.");
+                                }
+                                else Console.WriteLine($"{nameToRemove} is not included in the list.");
                             }
                             break;
                         // Search for name

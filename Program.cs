@@ -46,24 +46,56 @@ namespace NameSorter
                             Console.WriteLine("B");
                             break;
                         case "C":
+                            if (!NameList.IsThereList)
+                            {
+                                PrintWarning();
+                                break;
+                            }
                             Console.WriteLine("C");
                             break;
                         case "D":
-                            Console.WriteLine("D");
+                            if (!NameList.IsThereList)
+                            {
+                                PrintWarning();
+                                break;
+                            }
+                            else Console.WriteLine("D");
                             break;
                         case "E":
+                            if (!NameList.IsThereList)
+                            {
+                                PrintWarning();
+                                break;
+                            }
                             Console.WriteLine("E");
                             break;
 
                         case "F":
+                            if (!NameList.IsThereList)
+                            {
+                                PrintWarning();
+                                break;
+                            }
+
                             Console.WriteLine("F");
                             break;
 
                         case "G":
+                            if (!NameList.IsThereList)
+                            {
+                                PrintWarning();
+                                break;
+                            }
+
                             Console.WriteLine("G");
                             break;
 
                         case "H":
+                            if (!NameList.IsThereList)
+                            {
+                                PrintWarning();
+                                break;
+                            }
                             Console.WriteLine("H");
                             break;
 
@@ -82,6 +114,11 @@ namespace NameSorter
 
 
 
+            }
+
+            void PrintWarning()
+            {
+                Console.WriteLine("Invalid Option, you need to create a NameList first.");
             }
 
             bool VerifyMenuInput(string input)

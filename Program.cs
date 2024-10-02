@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.Data;
 using System.Reflection.Metadata;
 using System.Xml.Linq;
 
@@ -39,6 +40,7 @@ namespace NameSorter
 
             bool nameListExists = false;
 
+            while (keepRunning)
             {
 
                 // Helper method that prints out the contents of the menu.
@@ -54,7 +56,7 @@ namespace NameSorter
                         // Empty list, add new name
                         case "A":
                             userNameList.Clear();
-                            Console.WriteLine("Please enter a name: ");
+                            //Console.WriteLine("Please enter a name: ");
                             userNameList.Add(GetName());
 
                             break;
@@ -62,12 +64,13 @@ namespace NameSorter
 
                         // List with standard names
                         case "B":
+                            userNameList.Clear();
                             userNameList = new NameList(standardNames);
                             Console.WriteLine("The standard names have replaced any previous list.");
                             break;
 
 
-                            // Add name
+                        // Add name
                         case "C":
                             if (userNameList.Count <= 0)
                             {
@@ -90,7 +93,7 @@ namespace NameSorter
                                 userNameList.Remove(GetName());
                             }
                             break;
-                            // Search for name
+                        // Search for name
                         case "E":
                             if (userNameList.Count <= 0)
                             {
@@ -112,7 +115,7 @@ namespace NameSorter
 
 
                             break;
-                            // Display list
+                        // Display list
                         case "F":
                             if (userNameList.Count <= 0)
                             {
@@ -120,9 +123,9 @@ namespace NameSorter
                                 break;
                             }
                             Console.WriteLine("Your NameList: ");
-                            userNameList.PrintList();
+                            userNameList.PrintList(userNameList);
                             break;
-                            // Sort list in alpha order
+                        // Sort list in alpha order
                         case "G":
                             if (userNameList.Count <= 0)
                             {
@@ -132,9 +135,9 @@ namespace NameSorter
 
                             userNameList.Sort();
                             Console.WriteLine("Your sorted list: ");
-                            userNameList.PrintList();
+                            userNameList.PrintList(userNameList);
                             break;
-                            // Sort list in reverse alpha order
+                        // Sort list in reverse alpha order
                         case "H":
                             if (userNameList.Count <= 0)
                             {
@@ -143,9 +146,9 @@ namespace NameSorter
                             }
                             userNameList.Sort();
                             userNameList.Reverse();
-                            userNameList.PrintList();
+                            userNameList.PrintList(userNameList);
                             break;
-                            // Exit program
+                        // Exit program
                         case "X":
                             keepRunning = false;
                             break;
@@ -259,23 +262,47 @@ class NameList : List<string>
 
 
     // Constructor with list.
-    public NameList(List<string> nameList)
+    public NameList(List<string> nameList) : base (nameList)
     {
+        //Names = nameList;
+
+        //List<string> Names = new List<string>();
         Names = nameList;
+        //foreach (string name in nameList)
+        //{ Names.Add(name); }
+
+
+
+        //Names.AddRange(nameList);
+
+
+        //Names = new List<string> ();
+        //Names = nameList;
+
+        
+
+
+        //foreach (string name in nameList)
+        //{
+        //    Names.Add(name);
+        //}
+
+
+
         //IsThereList = true;
 
     }
     // Constructor with name.
-    public NameList()
+    public NameList() : base()
     {
         Names = new List<string>();
         //IsThereList = true;
 
     }
-    public void PrintList()
+    public void PrintList(NameList names)
     {
-         
-        foreach (var name in this.Names)
+
+        foreach (string name in names)
         {
             Console.WriteLine(name);
         }

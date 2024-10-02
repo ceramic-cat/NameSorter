@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using System.Collections.Generic;
+using System.Xml.Linq;
 
 namespace NameSorter
 {
@@ -6,6 +7,20 @@ namespace NameSorter
     {
         static void Main(string[] args)
         {
+
+            Dictionary<char, string> menuOptions = new Dictionary<char, string>()
+            {
+                {'A', "Make an empty list of names" },
+                {'B', "Make a list with preselected names" },
+                {'C', "Add name to list" },
+                {'D', "Remove name from list"},
+                {'E', "Search name in list" },
+                {'F', "Display list" },
+                {'G', "Sort list: Alphabetical order" },
+                {'H', "Sort list: Reverse alphabetical order" },
+                {'X', "Exit program" }
+            };
+
 
             bool keepRunning = true;
 
@@ -38,76 +53,97 @@ namespace NameSorter
                 Console.WriteLine("Welcome to NameSorter!");
                 Console.WriteLine("What would you like to do?");
 
+                foreach (var option in menuOptions)
+                {
+                    {
+                        // Always print A, B and X options. The rest only prints if there is a list instantiated. 
+                        if (!option.Key.Equals('A') && !option.Key.Equals('B') && !option.Key.Equals('X'))
+                            if (NameList.IsThereList)
+                            {
+                                Console.WriteLine($"[{option.Key}]\t {option.Value}");
+
+                            }
+                            else
+                            {
+                                continue;
+                            }
+                        Console.WriteLine($"[{option.Key}]\t {option.Value}");
+
+
+
+                    }
+
+
+
+                    bool VerifyMenuInput(string input)
+                    {
+
+                    }
+
+                    string GetUserInput()
+                    {
+
+                    }
+
+
+
+
+
+                    //List<string> names = new List<string> { "Anna", "John", "Alice", "Beatrice" };
+                    //Console.WriteLine("Original list:");
+                    //foreach (var name in names)
+                    //{
+                    //    Console.WriteLine(name);
+                    //}
+
+                    //names.Sort(); // Sort the names alphabetically
+                    //Console.WriteLine("\nSorted list:");
+                    //foreach (var name in names)
+                    //{
+                    //    Console.WriteLine(name);
+                    //}
+
+                    //Console.WriteLine("\nEnter name to search:");
+                    //string searchName = Console.ReadLine();
+
+                    //if (names.Contains(searchName))
+                    //{
+                    //    Console.WriteLine($"{searchName} is in the list.");
+                    //}
+                    //else
+                    //{
+                    //    Console.WriteLine($"{searchName} is not in the list.");
+                    //}
+                    //Console.ReadKey();
+                }
             }
-
-
-
-            bool VerifyMenuInput(string input)
-            {
-
-            }
-
-            string GetUserInput()
-            {
-
-            }
-
-
-
-
-            List<string> names = new List<string> { "Anna", "John", "Alice", "Beatrice" };
-            Console.WriteLine("Original list:");
-            foreach (var name in names)
-            {
-                Console.WriteLine(name);
-            }
-
-            names.Sort(); // Sort the names alphabetically
-            Console.WriteLine("\nSorted list:");
-            foreach (var name in names)
-            {
-                Console.WriteLine(name);
-            }
-
-            Console.WriteLine("\nEnter name to search:");
-            string searchName = Console.ReadLine();
-
-            if (names.Contains(searchName))
-            {
-                Console.WriteLine($"{searchName} is in the list.");
-            }
-            else
-            {
-                Console.WriteLine($"{searchName} is not in the list.");
-            }
-            Console.ReadKey();
         }
-    }
 
 
-    class NameList: List<string>
-    {
-        private static bool _isThereList;
-        public List<string> Names { get; private set; }
-        public static bool IsThereList {get; private set;} = false;
-
-
-        // Constructor with list.
-        public NameList(List<string> nameList)
+        class NameList : List<string>
         {
-            Names = nameList;
-            _isThereList = true;
+            private static bool _isThereList;
+            public List<string> Names { get; private set; }
+            public static bool IsThereList { get; private set; } = false;
+
+
+            // Constructor with list.
+            public NameList(List<string> nameList)
+            {
+                Names = nameList;
+                _isThereList = true;
+
+            }
+            // Constructor without list, creates new list.
+            public NameList()
+            {
+                Names = new List<string>();
+                _isThereList = true;
+
+            }
+
+
 
         }
-        // Constructor without list, creates new list.
-        public NameList()
-        {
-            Names = new List<string>();
-            _isThereList = true;
-
-        }
-
-
-
     }
 }

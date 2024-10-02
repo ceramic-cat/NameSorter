@@ -100,10 +100,11 @@ namespace NameSorter
                                 PrintWarning();
                                 break;
                             }
-
-                            if (userNameList.Contains(userInput))
-                                Console.WriteLine($"{userInput} is in the list.");
-                            else Console.WriteLine($"{userInput} is not in the list.");
+                            Console.WriteLine("Enter a name for searching: ");
+                            string searchName = Console.ReadLine();
+                            if (userNameList.Contains(searchName))
+                                Console.WriteLine($"{searchName} is in the list.");
+                            else Console.WriteLine($"{searchName} is not in the list.");
                             break;
                         // Display list
                         case "F":
@@ -211,34 +212,6 @@ namespace NameSorter
                     }
                 }
             }
-
-
-            //List<string> names = new List<string> { "Anna", "John", "Alice", "Beatrice" };
-            //Console.WriteLine("Original list:");
-            //foreach (var name in names)
-            //{
-            //    Console.WriteLine(name);
-            //}
-
-            //names.Sort(); // Sort the names alphabetically
-            //Console.WriteLine("\nSorted list:");
-            //foreach (var name in names)
-            //{
-            //    Console.WriteLine(name);
-            //}
-
-            //Console.WriteLine("\nEnter name to search:");
-            //string searchName = Console.ReadLine();
-
-            //if (names.Contains(searchName))
-            //{
-            //    Console.WriteLine($"{searchName} is in the list.");
-            //}
-            //else
-            //{
-            //    Console.WriteLine($"{searchName} is not in the list.");
-            //}
-            //Console.ReadKey();
         }
     }
 }
@@ -254,32 +227,7 @@ class NameList : List<string>
     // Constructor with list.
     public NameList(List<string> nameList) : base (nameList)
     {
-        //Names = nameList;
-
-        //List<string> Names = new List<string>();
         Names = nameList;
-        //foreach (string name in nameList)
-        //{ Names.Add(name); }
-
-
-
-        //Names.AddRange(nameList);
-
-
-        //Names = new List<string> ();
-        //Names = nameList;
-
-        
-
-
-        //foreach (string name in nameList)
-        //{
-        //    Names.Add(name);
-        //}
-
-
-
-        //IsThereList = true;
 
     }
     // Constructor with name.
